@@ -57,7 +57,36 @@ const Gogo = ({ match }) => (
         path={`${match.url}/meta-data`}
         render={(props) => <MetaData {...props} />}
       />
-      <Redirect to="/error" />
+      {/* <Redirect exact from="/" to="/portal" />
+      <Route
+        path="/dashboard"
+        render={(props) => <Dashboard {...props} />}
+      />
+      <Route
+        path="/inventory"
+        render={(props) => <Inventory {...props} />}
+      />
+      <Route
+        path="/holders"
+        render={(props) => <Holders {...props} />}
+      />
+      <Route
+        path="/rewards"
+        render={(props) => <Rewards {...props} />}
+      />
+      <Route
+        path="/portal"
+        render={(props) => <Portal {...props} />}
+      />
+      <Route
+        path="/transactions"
+        render={(props) => <Transactions {...props} />}
+      />
+      <Route
+        path="/meta-data"
+        render={(props) => <MetaData {...props} />}
+      />
+      <Redirect to="/error" /> */}
     </Switch>
   </Suspense>
 );

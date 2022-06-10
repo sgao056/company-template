@@ -54,7 +54,7 @@ class App extends React.Component {
               <Router>
                 <Switch>
                   <Route
-                    path={adminRoot}
+                    path="/app"
                     render={(props) => <ViewApp {...props} />}
                   />
                   <Route
@@ -65,7 +65,7 @@ class App extends React.Component {
                   <Route
                     path="/"
                     exact
-                    render={(props) => <ViewApp {...props} />}
+                    render={(props) => <ViewHome {...props} />}
                   />
                   <Redirect to="/error" />
                   
