@@ -3,8 +3,6 @@
   height: $navbar-height;
   padding: 1.5rem 0;
   @include depth(1);
-  z-index: 2;
-
 
   #notificationDropdown {
     width: 260px;
@@ -95,11 +93,7 @@
   }
 
   .navbar-left {
-    flex-basis: 50%;
-  }
-  .navbar-left-blank
-  {
-    width:40%;
+    flex-basis: 40%;
   }
 
   .navbar-right {
@@ -128,8 +122,8 @@
   }
 
   .navbar-logo {
-    width: 100px;
-    height:100px;
+    width: 110px;
+    height: 35px;
     position: absolute;
     left: 0;
     right: 0;

@@ -1,6 +1,5 @@
 {
   "name": "gogo-react",
-  "homepage": "https://sgao056.github.io/company-template",
   "version": "5.3.1",
   "description": "Gogo - React Bootstrap 4 Admin Dashboard Template",
   "private": true,
@@ -32,7 +31,6 @@
     "react-dropzone-component": "^3.2.0",
     "react-google-maps": "^9.4.5",
     "react-headroom": "^3.1.1",
-    "react-icons": "^4.4.0",
     "react-image-lightbox": "^5.1.1",
     "react-intl": "5.20.1",
     "react-lines-ellipsis": "^0.15.0",
@@ -48,7 +46,6 @@
     "react-table": "7.7.0",
     "react-tagsinput": "^3.19.0",
     "react-transition-group": "^4.4.2",
-    "react-vertical-timeline-component": "^3.5.2",
     "react-yandex-maps": "^4.6.0",
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",

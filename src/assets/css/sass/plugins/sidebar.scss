@@ -3,10 +3,9 @@
   position: fixed;
   top: 0;
   bottom: 0;
+  padding-top: $navbar-height;
   z-index: 4;
-  // padding-top: $navbar-height;
-  // height: calc(100% - #{$navbar-height});
-  height: 100%;
+  height: calc(100% - #{$navbar-height});
   transition: border-radius $menu-collapse-time;
 
   .scrollbar-container {
@@ -16,10 +15,7 @@
 
   .main-menu {
     width: $main-menu-width;
-    
-    // height: calc(100% - #{$navbar-height});
-    height: 100%;
-
+    height: calc(100% - #{$navbar-height});
     background: $foreground-color;
     z-index: 3;
     position: fixed;
@@ -101,23 +97,17 @@
 
     @include respond-below(xl) {
       width: $main-menu-width-lg;
-      // height: calc(100% - #{$navbar-height-lg});
-      height: 100%;
-
+      height: calc(100% - #{$navbar-height-lg});
     }
 
     @include respond-below(lg) {
       width: $main-menu-width-md;
-      // height: calc(100% - #{$navbar-height-md});
-      height: 100%;
-
+      height: calc(100% - #{$navbar-height-md});
     }
 
     @include respond-below(sm) {
       width: $main-menu-width-xs;
-      // height: calc(100% - #{$navbar-height-xs});
-      height: 100%;
-
+      height: calc(100% - #{$navbar-height-xs});
 
       ul li i {
         font-size: 28px;
@@ -144,9 +134,7 @@
     border-left: 1px solid $separator-color-light;
     @include depth(2);
     transition: transform $menu-collapse-time;
-    // height: calc(100% - #{$navbar-height});
-    height: 100%;
-
+    height: calc(100% - #{$navbar-height});
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 0;
@@ -256,47 +244,35 @@
     @include respond-below(xl) {
       left: $main-menu-width-lg;
       width: $sub-menu-width-lg;
-      // height: calc(100% - #{$navbar-height-lg});
-        height: 100%;
-
+      height: calc(100% - #{$navbar-height-lg});
     }
 
     @include respond-below(lg) {
       left: $main-menu-width-md;
       width: $sub-menu-width-md;
-      // height: calc(100% - #{$navbar-height-md});
-      height: 100%;
-
+      height: calc(100% - #{$navbar-height-md});
     }
 
     @include respond-below(sm) {
       left: $main-menu-width-xs;
       width: $sub-menu-width-xs;
-      // height: calc(100% - #{$navbar-height-xs});
-        height: 100%;
-
+      height: calc(100% - #{$navbar-height-xs});
     }
   }
 
   @include respond-below(xl) {
-    // padding-top: $navbar-height-lg;
-    // height: calc(100% - #{$navbar-height-lg});
-    height: 100%;
-
+    padding-top: $navbar-height-lg;
+    height: calc(100% - #{$navbar-height-lg});
   }
 
   @include respond-below(lg) {
-    // padding-top: $navbar-height-md;
-    // height: calc(100% - #{$navbar-height-md});
-    height: 100%;
-
+    padding-top: $navbar-height-md;
+    height: calc(100% - #{$navbar-height-md});
   }
 
   @include respond-below(sm) {
-    // padding-top: $navbar-height-xs;
-    // height: calc(100% - #{$navbar-height-xs});
-    height: 100%;
-
+    padding-top: $navbar-height-xs;
+    height: calc(100% - #{$navbar-height-xs});
     @include depth(1);
   }
 }
