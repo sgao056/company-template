@@ -1,6 +1,16 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect, useRef} from 'react';
-import { Button, Collapse, Card, Form, FormGroup, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
+import { 
+  Button, 
+  Collapse, 
+  Card,
+  Input, 
+  Row, 
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter, 
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import { Colxx } from 'components/common/CustomBootstrap';
@@ -82,6 +92,8 @@ const LastStepEnd = () => {
   const [collapse1, setCollapse1] = useState(true);
   const [complete, setComplete] = useState(false);
   const [saveButton, setSaveButton] = useState(false);
+  const [modalGenerate, setModalGenerate] = useState(false);
+  const [modalChanged, setModalChanged] = useState(false);
   const [nftItem, setNftItem] = useState(
     {
       portrait:'',
@@ -246,15 +258,58 @@ const LastStepEnd = () => {
                               >Save draft</Button>
                             </Colxx>
                             <Colxx className="p-0 m-1">
-                              {/* <Link to="/user"> */}
-                                <Button 
+                              <div>
+                                <Button
                                   className='p-1 w-100'
-                                  onClick={()=>{
-                                    alert('Generate successfully, press ok to leave this page!')
-                                    window.location.replace('/#/user');
+                                  onClick={() => {
+                                    setInterval(()=>{
+                                      setModalChanged(true)
+                                    },5000)
+                                    setModalGenerate(true)
                                   }}
-                                >Generate</Button>
-                              {/* </Link> */}
+                                >
+                                  Generate
+                                </Button>
+                                <Modal
+                                  isOpen={modalGenerate}
+                                  toggle={() => setModalGenerate(!modalGenerate)}
+                                >
+                                  { modalChanged 
+                                    ?
+                                    <>
+                                    <ModalHeader>
+                                        Your Memberpass has been  successfully generated! 
+                                    </ModalHeader>
+                                    <ModalBody>
+                                      <p className='m-0 p-0'>
+                                        Go project dashboard setup everything before publish.
+                                      </p>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                      <Link to="/user">
+                                        <Button>
+                                          Project Dashboard
+                                        </Button>  
+                                      </Link>
+                                    </ModalFooter>
+                                    </>
+                                    :
+                                    <>
+                                      <ModalHeader>
+                                        Generating Contract
+                                      </ModalHeader>
+                                      <ModalBody>
+                                        <p className='m-0 p-0'>
+                                          Will complete a fake demo in 5 seconds!
+                                        </p>
+                                        <div className='d-flex justify-content-center align-items-center' style={{height:"200px"}}>
+                                          <div className='publish_NFT_loading'/>
+                                        </div>
+                                      </ModalBody>
+                                    </>
+                                  }
+                                </Modal>
+                              </div>
                             </Colxx>
                           </Row>
                         </Colxx>

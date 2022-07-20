@@ -47,7 +47,8 @@ function NFTlist() {
                       </span>
                       {item.title}
                     </p>
-                    <Card className='p-4 w-100'>
+                    <Link to="/user">
+                      <Card className='p-4 w-100'>
                           <img src={item.image} alt="" 
                           style={{height:
                             document.body.scrollWidth < 768 
@@ -76,6 +77,7 @@ function NFTlist() {
                               </div>                              
                           </p>
                       </Card>
+                    </Link>
                   </Colxx>
                 )
               }
