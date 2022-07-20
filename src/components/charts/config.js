@@ -138,56 +138,14 @@ export const scatterChartOptions = {
     ],
   },
   tooltips: chartTooltip,
-
-  // legend: {
-  //   position: 'bottom',
-  //   labels: {
-  //     padding: 30,
-  //     usePointStyle: true,
-  //     fontSize: 12,
-  //   },
-  // },
-  // responsive: true,
-  // maintainAspectRatio: false,
-  // scales: {
-  //   yAxes: [
-  //     {
-  //       gridLines: {
-  //         display: true,
-  //         lineWidth: 1,
-  //         color: 'rgba(0,0,0,0.1)',
-  //         drawBorder: false,
-  //       },
-  //       ticks: {
-  //         beginAtZero: true,
-  //         stepSize: 20,
-  //         min: -80,
-  //         max: 80,
-  //         padding: 20,
-  //       },
-  //     },
-  //   ],
-  //   xAxes: [
-  //     {
-  //       gridLines: {
-  //         display: true,
-  //         lineWidth: 1,
-  //         color: 'rgba(0,0,0,0.1)',
-  //       },
-  //     },
-  //   ],
-  // },
 };
 
 export const barChartOptions = {
   legend: {
     position: 'bottom',
-    labels: {
-      padding: 30,
-      usePointStyle: true,
-      fontSize: 12,
-    },
+    labels: false,
   },
+  scaleShowLabels : true,
   responsive: true,
   maintainAspectRatio: false,
   scales: {
@@ -201,17 +159,18 @@ export const barChartOptions = {
         },
         ticks: {
           beginAtZero: true,
-          stepSize: 100,
-          min: 300,
-          max: 800,
-          padding: 20,
+          stepSize: 20,
+          min: 0,
+          max:100,
+          padding: 10,
         },
       },
     ],
     xAxes: [
       {
+        display: true,
         gridLines: {
-          display: false,
+          display: true,
         },
       },
     ],

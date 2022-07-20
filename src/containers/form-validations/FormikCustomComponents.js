@@ -1,11 +1,9 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Row, Card, CardBody, FormGroup, Label, Button } from 'reactstrap';
-import { Colxx } from 'components/common/CustomBootstrap';
-import IntlMessages from 'helpers/IntlMessages';
 import {
   FormikReactSelect,
   FormikCheckboxGroup,
@@ -18,6 +16,8 @@ import {
   FormikSwitch,
   FormikDatePicker,
 } from './FormikFields';
+import { Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()

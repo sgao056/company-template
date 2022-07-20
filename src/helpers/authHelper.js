@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isAuthGuardActive } from 'constants/defaultValues';
+// eslint-disable-next-line import/no-cycle
 import { getCurrentUser } from './Utils';
+// eslint-disable-next-line import/no-cycle
+import { isAuthGuardActive } from 'constants/defaultValues';
 
 const ProtectedRoute = ({
   component: Component,

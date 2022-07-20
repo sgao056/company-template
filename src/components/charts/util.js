@@ -67,7 +67,7 @@ export const centerTextPlugin = {
     ctx.save();
   },
   // eslint-disable-next-line no-unused-vars
-  beforeEvent(chart, event, options) {
+  beforeEvent(chart, event) {
     const firstPoint = chart.getElementAtEvent(event)[0];
 
     if (firstPoint) {

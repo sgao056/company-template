@@ -17,7 +17,7 @@ const CalendarToolbar = (toolbar) => {
   const label = () => {
     const date = moment(toolbar.date);
     return (
-      <span>
+      <span style={{fontSize:"large", fontWeight:"bolder"}}>
         <span>{date.format('MMMM')} </span>
         <span> {date.format('YYYY')}</span>
       </span>

@@ -10,7 +10,7 @@
 }
 
 .wizard {
-  margin-top: -2rem;
+  margin-top: 0;
 }
 
 .wizard ul.nav {
@@ -22,7 +22,7 @@
   background: initial;
   position: relative;
   border: initial;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 
   &:before {
     content: ' ';
@@ -85,13 +85,13 @@
       color: initial;
       background: $separator-color-light;
       border: none;
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
       text-decoration: none;
       z-index: 1;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -6px;
+      bottom: -9px;
     }
 
     &.step-doing a:after,

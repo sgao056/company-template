@@ -9,11 +9,13 @@ import Footer from 'containers/navs/Footer';
 const AppLayout = ({ containerClassnames, children, history }) => {
   return (
     <div id="app-container" className={containerClassnames}>
-      <TopNav history={history} />
-      <Sidebar />
-      <main>
-        <div className="container-fluid">{children}</div>
-      </main>
+      <Sidebar/>
+      <div>
+        <TopNav history={history} />
+        <main style={{padding:"0px !important"}}>
+          <div className="container-fluid">{children}</div>
+        </main>
+      </div>
       <Footer />
     </div>
   );

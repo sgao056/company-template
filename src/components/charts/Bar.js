@@ -1,13 +1,12 @@
 /* eslint-disable prefer-rest-params */
 import React, { useEffect, useRef, useState } from 'react';
 import { Chart } from 'chart.js';
-
 import { barChartOptions } from './config';
 
 const Bar = ({ data, shadow = false }) => {
   const chartContainer = useRef(null);
   const [, setChartInstance] = useState(null);
-
+  const timestamp = Date.parse(new Date());
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       if (shadow) {
@@ -41,7 +40,7 @@ const Bar = ({ data, shadow = false }) => {
     }
   }, [chartContainer, data, shadow]);
 
-  return <canvas ref={chartContainer} />;
+  return <canvas id={timestamp} ref={chartContainer} />;
 };
 
 export default Bar;

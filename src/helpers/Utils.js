@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import {
   defaultDirection,
   defaultLocale,
@@ -119,7 +120,7 @@ export const setCurrentRadius = (radius) => {
 };
 
 export const getCurrentLanguage = () => {
-  let language = defaultLocale;
+  let language;
   try {
     language =
       localStorage.getItem('currentLanguage') &&
@@ -149,7 +150,7 @@ export const setCurrentLanguage = (locale) => {
 };
 
 export const getCurrentUser = () => {
-  let user = null;
+  let user;
   try {
     user =
       localStorage.getItem('gogo_current_user') != null

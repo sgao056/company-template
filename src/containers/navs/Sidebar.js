@@ -25,8 +25,10 @@ class Sidebar extends Component {
       selectedParentMenu: '',
       viewingParentMenu: '',
       collapsedMenus: [],
+      submenuDisplay:true,
     };
   }
+
 
   // eslint-disable-next-line react/sort-comp
   handleWindowResize = (event) => {
@@ -351,12 +353,18 @@ class Sidebar extends Component {
   };
 
   render() {
-    const { selectedParentMenu, viewingParentMenu, collapsedMenus } =
+    const { selectedParentMenu, viewingParentMenu, collapsedMenus, submenuDisplay } =
       this.state;
     return (
       <div className="sidebar">
-        <div className="main-menu">
+        {/* <div className="main-menu">
           <div className="scroll">
+            <div className="logo">
+              <img
+              style={{width:"100%"}} 
+              src="/assets/logos/light.png" 
+              alt="" />
+            </div>
             <PerfectScrollbar
               options={{ suppressScrollX: true, wheelPropagation: false }}
             >
@@ -398,129 +406,136 @@ class Sidebar extends Component {
               </Nav>
             </PerfectScrollbar>
           </div>
-        </div>
+        </div> */}
 
-        <div className="sub-menu">
+        <div className="sub-menu" 
+          style={{display: submenuDisplay ? "block":"none"}}
+        >
           <div className="scroll">
             <PerfectScrollbar
               options={{ suppressScrollX: true, wheelPropagation: false }}
             >
-              {menuItems &&
-                this.filteredList(menuItems).map((item) => {
-                  return (
-                    <Nav
-                      key={item.id}
-                      className={classnames({
-                        'd-block':
+              {
+              menuItems 
+              ? 
+              this.filteredList(menuItems).map((item) => {
+                return (
+                  <Nav
+                    key={item.id}
+                    className={classnames({
+                      'd-block':
+                        // eslint-disable-next-line react/destructuring-assignment
+                        (this.state.selectedParentMenu === item.id &&
                           // eslint-disable-next-line react/destructuring-assignment
-                          (this.state.selectedParentMenu === item.id &&
-                            // eslint-disable-next-line react/destructuring-assignment
-                            this.state.viewingParentMenu === '') ||
-                          // eslint-disable-next-line react/destructuring-assignment
-                          this.state.viewingParentMenu === item.id,
-                      })}
-                      data-parent={item.id}
-                    >
-                      {item.subs &&
-                        this.filteredList(item.subs).map((sub, index) => {
-                          return (
-                            <NavItem
-                              key={`${item.id}_${index}`}
-                              className={`${
-                                sub.subs && sub.subs.length > 0
-                                  ? 'has-sub-item'
-                                  : ''
-                              }`}
-                            >
-                              {/* eslint-disable-next-line no-nested-ternary */}
-                              {sub.newWindow ? (
-                                <a
-                                  href={sub.to}
-                                  rel="noopener noreferrer"
-                                  target="_blank"
+                          this.state.viewingParentMenu === '') ||
+                        // eslint-disable-next-line react/destructuring-assignment
+                        this.state.viewingParentMenu === item.id,
+                    })}
+                    data-parent={item.id}
+                  >
+                    {item.subs &&
+                      this.filteredList(item.subs).map((sub, index) => {
+                        return (
+                          <NavItem
+                            key={`${item.id}_${index}`}
+                            className={`${
+                              sub.subs && sub.subs.length > 0
+                                ? 'has-sub-item'
+                                : ''
+                            }`}
+                          >
+                            {/* eslint-disable-next-line no-nested-ternary */}
+                            {sub.newWindow ? (
+                              <a
+                                href={sub.to}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                              >
+                                <i className={sub.icon} />{' '}
+                                <IntlMessages id={sub.label} />
+                              </a>
+                            ) : sub.subs && sub.subs.length > 0 ? (
+                              <>
+                                <NavLink
+                                  className={`rotate-arrow-icon opacity-50 ${
+                                    collapsedMenus.indexOf(
+                                      `${item.id}_${index}`
+                                    ) === -1
+                                      ? ''
+                                      : 'collapsed'
+                                  }`}
+                                  to={sub.to}
+                                  id={`${item.id}_${index}`}
+                                  onClick={(e) =>
+                                    this.toggleMenuCollapse(
+                                      e,
+                                      `${item.id}_${index}`
+                                    )
+                                  }
                                 >
-                                  <i className={sub.icon} />{' '}
-                                  <IntlMessages id={sub.label} />
-                                </a>
-                              ) : sub.subs && sub.subs.length > 0 ? (
-                                <>
-                                  <NavLink
-                                    className={`rotate-arrow-icon opacity-50 ${
-                                      collapsedMenus.indexOf(
-                                        `${item.id}_${index}`
-                                      ) === -1
-                                        ? ''
-                                        : 'collapsed'
-                                    }`}
-                                    to={sub.to}
-                                    id={`${item.id}_${index}`}
-                                    onClick={(e) =>
-                                      this.toggleMenuCollapse(
-                                        e,
-                                        `${item.id}_${index}`
-                                      )
-                                    }
-                                  >
-                                    <i className="simple-icon-arrow-down" />{' '}
-                                    <IntlMessages id={sub.label} />
-                                  </NavLink>
-
-                                  <Collapse
-                                    isOpen={
-                                      collapsedMenus.indexOf(
-                                        `${item.id}_${index}`
-                                      ) === -1
-                                    }
-                                  >
-                                    <Nav className="third-level-menu">
-                                      {this.filteredList(sub.subs).map(
-                                        (thirdSub, thirdIndex) => {
-                                          return (
-                                            <NavItem
-                                              key={`${item.id}_${index}_${thirdIndex}`}
-                                            >
-                                              {thirdSub.newWindow ? (
-                                                <a
-                                                  href={thirdSub.to}
-                                                  rel="noopener noreferrer"
-                                                  target="_blank"
-                                                >
-                                                  <i
-                                                    className={thirdSub.icon}
-                                                  />{' '}
-                                                  <IntlMessages
-                                                    id={thirdSub.label}
-                                                  />
-                                                </a>
-                                              ) : (
-                                                <NavLink to={thirdSub.to}>
-                                                  <i
-                                                    className={thirdSub.icon}
-                                                  />{' '}
-                                                  <IntlMessages
-                                                    id={thirdSub.label}
-                                                  />
-                                                </NavLink>
-                                              )}
-                                            </NavItem>
-                                          );
-                                        }
-                                      )}
-                                    </Nav>
-                                  </Collapse>
-                                </>
-                              ) : (
-                                <NavLink to={sub.to}>
-                                  <i className={sub.icon} />{' '}
+                                  <i className="simple-icon-arrow-down" />{' '}
                                   <IntlMessages id={sub.label} />
                                 </NavLink>
-                              )}
-                            </NavItem>
-                          );
-                        })}
-                    </Nav>
-                  );
-                })}
+
+                                <Collapse
+                                  isOpen={
+                                    collapsedMenus.indexOf(
+                                      `${item.id}_${index}`
+                                    ) === -1
+                                  }
+                                >
+                                  <Nav className="third-level-menu">
+                                    {this.filteredList(sub.subs).map(
+                                      (thirdSub, thirdIndex) => {
+                                        return (
+                                          <NavItem
+                                            key={`${item.id}_${index}_${thirdIndex}`}
+                                          >
+                                            {thirdSub.newWindow ? (
+                                              <a
+                                                href={thirdSub.to}
+                                                rel="noopener noreferrer"
+                                                target="_blank"
+                                              >
+                                                <i
+                                                  className={thirdSub.icon}
+                                                />{' '}
+                                                <IntlMessages
+                                                  id={thirdSub.label}
+                                                />
+                                              </a>
+                                            ) : (
+                                              <NavLink to={thirdSub.to}>
+                                                <i
+                                                  className={thirdSub.icon}
+                                                />{' '}
+                                                <IntlMessages
+                                                  id={thirdSub.label}
+                                                />
+                                              </NavLink>
+                                            )}
+                                          </NavItem>
+                                        );
+                                      }
+                                    )}
+                                  </Nav>
+                                </Collapse>
+                              </>
+                            ) : (
+                              <NavLink to={sub.to}>
+                                <i className={sub.icon} />{' '}
+                                <IntlMessages id={sub.label} />
+                              </NavLink>
+                            )}
+                          </NavItem>
+                        );
+                      })}
+                  </Nav>
+                );
+              })
+              :
+              <div/>
+              }
             </PerfectScrollbar>
           </div>
         </div>
@@ -529,7 +544,7 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = ({ menu, authUser }) => {
+const mapStateToProps = ({ menu }) => {
   const {
     containerClassnames,
     subHiddenBreakpoint,
@@ -538,14 +553,12 @@ const mapStateToProps = ({ menu, authUser }) => {
     selectedMenuHasSubItems,
   } = menu;
 
-  const { currentUser } = authUser;
   return {
     containerClassnames,
     subHiddenBreakpoint,
     menuHiddenBreakpoint,
     menuClickCount,
     selectedMenuHasSubItems,
-    currentUser,
   };
 };
 export default withRouter(
